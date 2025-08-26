@@ -24,10 +24,10 @@ defmodule EntradaReales do
   end
 
   defp generar_mensaje(valor_descuento, valor_final) do
-    # Redondeamos y usamos directamente en el string
-    valor_descuento_redondeado = Float.round(valor_descuento, 1)
-    valor_final_redondeado = Float.round(valor_final, 1)
-
-    "Valor de descuento de $#{valor_descuento_redondeado} y el valor final $#{valor_final_redondeado}"
+    valor_descuento = valor_descuento |> Float.round(1)
+    valor_final = valor_final |> Float.round(1)
+    "Valor de descuento de $#{valor_descuento} y el valor final $#{valor_final}"
   end
 end
+
+EntradaReales.main()
