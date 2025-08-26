@@ -4,6 +4,10 @@ defmodule Util do
     |> String.trim()
   end
 
+  def mostrar_mensaje_py(mensaje) do
+    System.cmd("python3", ["mostrar_mensaje.py", mensaje])
+  end
+
   def mostrar_mensaje(mensaje) do
     IO.puts(mensaje)
   end

@@ -12,7 +12,7 @@ defmodule EntradaReales do
     valor_final = calcular_valor_final(valor_producto, valor_descuento)
 
     generar_mensaje(valor_descuento, valor_final)
-    |> Util.mostrar_mensaje()
+    |> Util.mostrar_mensaje_py()
   end
 
   defp calcular_valor_descuento(valor_producto, porcentaje_descuento) do

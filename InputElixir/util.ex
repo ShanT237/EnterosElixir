@@ -3,7 +3,7 @@ defmodule Util do
     System.cmd("python3", ["mostrar_mensaje.py", mensaje])
   end
 
-  def ingresarJava(mensaje, :texto) do
+  def ingresarJava(mensaje, :entero) do
     case System.cmd("java", ["-cp", ".", "IngresarMensaje", "input", mensaje]) do
       {output, 0} ->
         IO.puts("Texto ingresado correctamente.")
