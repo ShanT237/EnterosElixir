@@ -1,26 +1,43 @@
 defmodule Util do
+  @doc """
+  Muestra un mensaje utilizando un script externo de Python.
+
+  ## Parámetros
+    - mensaje: El mensaje a mostrar.
+
+  ## Ejemplo
+      Util.mostrar_mensaje("Hola mundo")
+  """
   def mostrar_mensaje(mensaje) do
     System.cmd("python3", ["mostrar_mensaje.py", mensaje])
   end
 
-  def ingresarJava(mensaje, :entero) do
-    case System.cmd("java", ["-cp", ".", "IngresarMensaje", "input", mensaje]) do
-      {output, 0} ->
-        IO.puts("Texto ingresado correctamente.")
-        String.trim(output)
+  @doc """
+  Solicita al usuario que ingrese un texto.
 
-      {error, code} ->
-        IO.puts("Error al ingresar el texto. Código: #{code}")
-        IO.puts("Detalles: #{error}")
-        nil
-    end
-  end
+  ## Parámetros
+    - mensaje: El mensaje a mostrar como prompt.
+    - :texto: Indica que se espera un texto.
 
+  ## Ejemplo
+      Util.ingresar("Ingrese su nombre", :texto)
+  """
   def ingresar(mensaje, :texto) do
     IO.gets(mensaje <> ": ")
     |> String.trim()
   end
 
+  @doc """
+  Solicita al usuario que ingrese un número entero. Si la entrada no es válida,
+  muestra un error y vuelve a solicitar la entrada.
+
+  ## Parámetros
+    - mensaje: El mensaje a mostrar como prompt.
+    - :entero: Indica que se espera un entero.
+
+  ## Ejemplo
+      Util.ingresar("Ingrese su edad", :entero)
+  """
   def ingresar(mensaje, :entero) do
     try do
       mensaje
@@ -33,6 +50,15 @@ defmodule Util do
     end
   end
 
+  @doc """
+  Muestra un mensaje de error en la salida estándar de error.
+
+  ## Parámetros
+    - mensaje: El mensaje de error a mostrar.
+
+  ## Ejemplo
+      Util.mostrar_error("Ocurrió un error")
+  """
   def mostrar_error(mensaje) do
     IO.puts(:standard_error, mensaje)
   end
